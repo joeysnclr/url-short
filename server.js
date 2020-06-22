@@ -54,7 +54,15 @@ app.get("/api/generate", function (req, res) {
 });
 
 app.get("/api/analytics/:linkId", function (req, res) {
-    res.send(req.params.linkId);
+    // get link data from database
+    Link.findOne({ linkId: req.params.linkId }, function (err, obj) {
+        if (err) res.send({ error: err });
+        if (obj) {
+            res.send(obj);
+        } else {
+            res.send({ error: "no link with that id" });
+        }
+    });
 });
 
 app.get("/:linkId", function (req, res) {

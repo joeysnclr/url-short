@@ -79,7 +79,11 @@ function Generate() {
             </form>
         );
     } else {
-        let message = generatedLink;
+        let message = (
+            <a href={generatedLink} target='noopener noreferrer'>
+                {generatedLink}
+            </a>
+        );
         let primaryButton = (
             <button className='my-s btn-green width-full' onClick={copyLink}>
                 Copy Link
