@@ -115,6 +115,7 @@ function Chart(data) {
                                         display: false,
                                     },
                                     type: "time",
+                                    distribution: "series",
                                     time: { unit: "day" },
                                     display: true,
                                 },

@@ -6,8 +6,8 @@ export default function Home() {
             <div className='my-m'>
                 <h1>Shorten Those Links!</h1>
                 <p className='my-s'>
-                    Build and protect your brand using powerful, recognizable
-                    short links.
+                    Our link shortener makes saving and remembering links easier
+                    with detailed analytics about how your links are being used.
                 </p>
                 <Generate />
             </div>
