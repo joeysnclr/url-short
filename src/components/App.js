@@ -7,6 +7,7 @@ import "../css/App.css";
 import Nav from "./Nav";
 import Home from "./Home";
 import Analytics from "./Analytics";
+import NotFound from "./NotFound";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Line } from "react-chartjs-2";
 
@@ -144,6 +145,7 @@ export default function App() {
                             />
                         </div>
                     </Route>
+                    <Route component={NotFound} />
                 </Switch>
             </div>
         </BrowserRouter>

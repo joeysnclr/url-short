@@ -41,7 +41,7 @@ function Generate() {
                     setLoading(false);
                 });
         }
-        setTimeout(getAPI, 2000);
+        setTimeout(getAPI, 250);
     }
     function backToGenerate() {
         setHasSubmitted(false);

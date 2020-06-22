@@ -57,10 +57,6 @@ app.get("/api/analytics/:linkId", function (req, res) {
     res.send(req.params.linkId);
 });
 
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
 app.get("/:linkId", function (req, res) {
     const newVisit = {
         date: Date.now(),
@@ -73,10 +69,15 @@ app.get("/:linkId", function (req, res) {
             if (link) {
                 res.redirect(link.link);
             } else {
-                res.redirect("/");
+                // send to react router if link id doesn't exist
+                res.sendFile(path.join(__dirname + "/build/index.html"));
             }
         }
     );
 });
 
+// send to react if path not in backend
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/build/index.html"));
+});
 app.listen(process.env.PORT || 8080);
