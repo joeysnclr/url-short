@@ -1,0 +1,61 @@
+@import "App.scss";
+
+.nav {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .nav-toggle {
+        display: block;
+        cursor: pointer;
+    }
+    .links {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: calc(100% - 80px);
+        top: 80px;
+        left: 0;
+        background-color: $dark-grey;
+        color: $light-grey;
+        a {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: $light-grey;
+        }
+    }
+}
+.nav.active {
+    background-color: $dark-grey;
+    color: $light-grey;
+    .logo {
+        color: $light-grey;
+    }
+    .links {
+        display: block;
+    }
+}
+@media only screen and (min-width: 900px) {
+    .nav {
+        .nav-toggle {
+            display: none;
+        }
+        .links {
+            background-color: initial;
+            position: static;
+            top: initial;
+            left: initial;
+            width: initial;
+            height: initial;
+            display: block;
+            a {
+                color: $dark-grey;
+                display: inline;
+                margin: 0;
+                margin-left: 30px;
+            }
+        }
+    }
+}
