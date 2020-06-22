@@ -136,7 +136,7 @@ function Documentation() {
                 <div className='m-four d-two'>
                     <h2 className='my-s'>Generate URL Endpoint</h2>
                     <div className='code'>
-                        <p className=''>/api/generate?l=link-here</p>
+                        <p className=''>GET /api/generate?l=link</p>
                         <p className=''>{"{"}</p>
                         <p className='indent'>linkId: linkId</p>
                         <p className=''>{"}"}</p>
@@ -145,9 +145,25 @@ function Documentation() {
                 <div className='m-four d-two'>
                     <h2 className='my-s'>Analytics Endpoint</h2>
                     <div className='code'>
-                        <p className=''>/api/generate?l=link-here</p>
+                        <p className=''>GET /api/analytics/linkId</p>
                         <p className=''>{"{"}</p>
                         <p className='indent'>linkId: linkId</p>
+                        <p className='indent'>link: link</p>
+                        <p className='indent'>visits: [</p>
+                        <p className='indent'>
+                            <p className='indent'>{"{"}</p>
+                            <p className='indent'>
+                                <p className='indent'>date: date</p>
+                            </p>
+                            <p className='indent'>{"}"}</p>
+                        </p>
+                        <p className='indent'>]</p>
+                        <p className='indent'>chart: {"{"}</p>
+                        <p className='indent'>
+                            <p className='indent'>labels: []</p>
+                            <p className='indent'>dataPoints: []</p>
+                        </p>
+                        <p className='indent'>{"}"}</p>
                         <p className=''>{"}"}</p>
                     </div>
                 </div>

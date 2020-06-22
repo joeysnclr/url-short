@@ -31,6 +31,22 @@ function validURL(str) {
     ); // fragment locator
     return !!pattern.test(str);
 }
+// Date Manipulation
+Date.prototype.addDays = function (days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+};
+
+function getDates(startDate, stopDate) {
+    var dateArray = [];
+    var currentDate = startDate;
+    while (currentDate <= stopDate) {
+        dateArray.push(new Date(currentDate));
+        currentDate = currentDate.addDays(1);
+    }
+    return dateArray;
+}
 // express init
 const app = express();
 app.use(express.static(path.join(__dirname, "build")));
@@ -58,7 +74,44 @@ app.get("/api/analytics/:linkId", function (req, res) {
     Link.findOne({ linkId: req.params.linkId }, function (err, obj) {
         if (err) res.send({ error: err });
         if (obj) {
-            res.send(obj);
+            let response = {
+                linkId: obj.linkId,
+                link: obj.link,
+                visits: obj.visits,
+                chart: {
+                    labels: [],
+                    dataPoints: [],
+                },
+            };
+            if (response.visits.length > 0) {
+                const firstDate = new Date(response.visits[0].date);
+                response.chart.labels = getDates(
+                    new Date(
+                        firstDate.getFullYear(),
+                        firstDate.getMonth(),
+                        firstDate.getDate()
+                    ),
+                    new Date()
+                );
+                response.chart.dataPoints = Array(
+                    response.chart.labels.length
+                ).fill(0);
+                for (const visit of response.visits) {
+                    const dateObj = new Date(visit.date);
+                    const dayObj = new Date(
+                        dateObj.getFullYear(),
+                        dateObj.getMonth(),
+                        dateObj.getDate()
+                    );
+                    const dayIndex = response.chart.labels.findIndex(function (
+                        x
+                    ) {
+                        return x.valueOf() === dayObj.valueOf();
+                    });
+                    response.chart.dataPoints[dayIndex] += 1;
+                }
+            }
+            res.send(response);
         } else {
             res.send({ error: "no link with that id" });
         }
