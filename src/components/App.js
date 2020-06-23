@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { Line } from "react-chartjs-2";
 import "../css/App.css";
 import Nav from "./Nav";
 import Home from "./Home";
 import Analytics from "./Analytics";
 import NotFound from "./NotFound";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Line } from "react-chartjs-2";
 
 // init fonawesome
 library.add(fab, faBars);
