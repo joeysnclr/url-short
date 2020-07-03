@@ -17,7 +17,7 @@ export default function Nav() {
     }
     return (
         <div className='nav container'>
-            <p className='logo'>linkify</p>
+            <p className='logo'>URL Shortener</p>
             <div className='nav-toggle' onClick={toggleNav}>
                 <FontAwesomeIcon icon='bars' />
             </div>
